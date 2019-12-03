@@ -76,3 +76,17 @@ form div input, form div textarea
 {
 	width: 100%;
 }
+
+/*adminView*/
+
+table
+{
+	border-collapse: collapse;
+}
+
+td, th
+{
+	border: 1px solid black;
+	text-align: center;
+	padding: 10px;
+}

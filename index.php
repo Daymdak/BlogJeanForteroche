@@ -1,5 +1,6 @@
 <?php
 require('controller/frontend.php');
+require('controller/backend.php');
 
 try {
 	if (isset($_GET['action'])) {
@@ -39,6 +40,9 @@ try {
 			else {
 				throw new Exception('Aucun identifiant de commentaire envoyé');
 			}
+		}
+		elseif ($_GET['action'] == 'controlPanel') {
+			controlPanel();
 		}
 	}
 	else {

@@ -14,6 +14,14 @@ class CommentManager extends Manager
 		return $comments;
 	}
 
+	public function getReportedComments()
+	{
+		$db = $this->dbConnect();
+		$reportedComments = $db->query('SELECT * FROM comments WHERE reports > 0 ORDER BY reports DESC');
+
+		return $reportedComments;
+	}
+
 	public function postComment($postId, $author, $comment)
 	{
 		$db = $this->dbConnect();
