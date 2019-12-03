@@ -2,19 +2,18 @@
 
 <?php ob_start(); ?>
 <div class="container">
-	<h1>Blog de Jean Forteroche</h1>
-	<p><a href="index.php">Retour à la liste des billets</a></p>
-
 	<div class="news">
-		<strong><?= htmlspecialchars($post['title']) ?></strong>
-		<em>le <?= $post['creation_date_fr'] ?></em>
-
+		<h2><?= htmlspecialchars($post['title']) ?></h2>
 		<p>
 			<?= nl2br(htmlspecialchars($post['content'])) ?>
 		</p>
+		<div class="dateAndReturnLink">
+			<em>Posté le <?= $post['creation_date_fr'] ?></em>
+			<p><a href="index.php">Retour à la liste des billets</a></p>
+		</div>
 	</div>
 
-	<h2>Commentaires</h2>
+	<h3>Commentaires</h3>
 
 	<form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
 		<div>
@@ -34,8 +33,10 @@
 	while ($comment = $comments->fetch())
 	{
 	?>
-		<p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?> <a href="index.php?action=reportComment&amp;id=<?= $comment['id'] ?>&amp;postId=<?= $comment['post_id'] ?>">Signaler</a></p>
-		<p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+		<div class="comment">
+			<p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?> - <a href="index.php?action=reportComment&amp;id=<?= $comment['id'] ?>&amp;postId=<?= $comment['post_id'] ?>">Signaler</a></p>
+			<p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+		</div>
 	<?php
 	}
 	?>
