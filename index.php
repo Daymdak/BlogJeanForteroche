@@ -1,5 +1,6 @@
 <?php
 require('controller/frontend.php');
+require('controller/backend.php');
 
 try {
 	if (isset($_GET['action'])) {
@@ -35,6 +36,17 @@ try {
 				else {
 					throw new Exception('Aucun identifiant de billet envoyé');
 				}
+			}
+			else {
+				throw new Exception('Aucun identifiant de commentaire envoyé');
+			}
+		}
+		elseif ($_GET['action'] == 'controlPanel') {
+			controlPanel();
+		}
+		elseif ($_GET['action'] == 'removeComment'){
+			if (isset($_GET['id']) && $_GET['id'] > 0) {
+				removeComment($_GET['id']);
 			}
 			else {
 				throw new Exception('Aucun identifiant de commentaire envoyé');

@@ -8,7 +8,7 @@
 	</head>
 
 	<body>
-		<?php require_once("view/frontend/header.php"); ?>
+		<?php require_once("view/backend/header.php"); ?>
 		<?= $content ?>
 		<?php require_once("view/frontend/footer.php"); ?>
 	</body>

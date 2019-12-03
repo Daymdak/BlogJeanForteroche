@@ -14,10 +14,18 @@ class CommentManager extends Manager
 		return $comments;
 	}
 
+	public function getReportedComments()
+	{
+		$db = $this->dbConnect();
+		$reportedComments = $db->query('SELECT * FROM comments WHERE reports > 0 ORDER BY reports DESC');
+
+		return $reportedComments;
+	}
+
 	public function postComment($postId, $author, $comment)
 	{
 		$db = $this->dbConnect();
-		$comments = $db->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
+		$comments = $db->prepare('INSERT INTO comments(post_id, author, comment, reports, comment_date) VALUES(?, ?, ?, 0, NOW())');
 		$newComment = $comments->execute(array($postId, $author, $comment));
 
 		return $newComment;
@@ -37,5 +45,12 @@ class CommentManager extends Manager
 			'newreports' => $numberReports,
 			'id' => $id
 		));
+	}
+
+	public function deleteComment($id)
+	{
+		$db = $this->dbConnect();
+		$req = $db->prepare('DELETE FROM comments WHERE id = ?');
+		$req->execute(array($id));
 	}
 }
