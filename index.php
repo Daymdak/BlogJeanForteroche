@@ -15,7 +15,7 @@ try {
 			}
 		}
 		elseif ($_GET['action'] == 'addComment') {
-			if (isset($_GET['id']) && $_GET['id'] >0) {
+			if (isset($_GET['id']) && $_GET['id'] > 0) {
 				if (!empty($_POST['author']) && !empty($_POST['comment'])) {
 					addComment($_GET['id'], $_POST['author'], $_POST['comment']);
 				}
@@ -25,6 +25,19 @@ try {
 			}
 			else {
 				throw new Exception('Aucun identifiant de billet envoyé');
+			}
+		}
+		elseif ($_GET['action'] == 'reportComment') {
+			if (isset($_GET['id']) && $_GET['id'] > 0) {
+				if (isset($_GET['postId']) && $_GET['postId'] > 0) {
+					reportComment($_GET['postId'], $_GET['id']);
+				}
+				else {
+					throw new Exception('Aucun identifiant de billet envoyé');
+				}
+			}
+			else {
+				throw new Exception('Aucun identifiant de commentaire envoyé');
 			}
 		}
 	}
