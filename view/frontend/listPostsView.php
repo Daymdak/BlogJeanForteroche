@@ -21,7 +21,7 @@ while ($data = $posts->fetch())
 				echo nl2br(htmlspecialchars($extract[$i]) . ' ');
 			}
 			?>
-			...<a href="#">Lire la suite</a>
+			...<a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Lire la suite</a>
 		</p>
 	</div>
 <?php
