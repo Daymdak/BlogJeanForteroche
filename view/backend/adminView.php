@@ -20,7 +20,7 @@
 				<td><?= htmlspecialchars($reportedComment['comment']) ?></td>
 				<td><?= $reportedComment['reports'] ?></td>
 				<td><?= $reportedComment['comment_date'] ?></td>
-				<td><a href="#">Supprimer</a></td>
+				<td><a href="index.php?action=removeComment&amp;id=<?= $reportedComment['id'] ?>">Supprimer</a></td>
 			</tr>
 		<?php
 		}

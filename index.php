@@ -44,6 +44,14 @@ try {
 		elseif ($_GET['action'] == 'controlPanel') {
 			controlPanel();
 		}
+		elseif ($_GET['action'] == 'removeComment'){
+			if (isset($_GET['id']) && $_GET['id'] > 0) {
+				removeComment($_GET['id']);
+			}
+			else {
+				throw new Exception('Aucun identifiant de commentaire envoyé');
+			}
+		}
 	}
 	else {
 		listPosts();

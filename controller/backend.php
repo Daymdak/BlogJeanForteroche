@@ -11,3 +11,17 @@ function controlPanel()
 
 	require('view/backend/adminView.php');
 }
+
+function removeComment($id)
+{
+	$commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+
+	$removeComment = $commentManager->deleteComment($id);
+
+	if ($removeComment === false) {
+		throw new Exception('Impossible de supprimer le commentaire');
+	}
+	else {
+		header('Location: index.php?action=controlPanel');
+	}
+}
