@@ -4,7 +4,7 @@
 
 <?php
 
-if (!isset($_POST['password']) || $_POST['password'] != "Apotoxine4869")
+if ((!isset($_POST['password']) || $_POST['password'] != "Apotoxine4869") && !isset($_SESSION['admin']))
 {
 	?>
 		<form action="index.php?action=adminAccess" method="POST">
