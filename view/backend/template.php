@@ -21,7 +21,7 @@
 		<div class="container">
 			<?= $content ?>
 		</div>
-		<?php require_once("view/frontend/footer.php"); ?>
+		<?php require_once("view/backend/footer.php"); ?>
 	</body>
 
 </html>

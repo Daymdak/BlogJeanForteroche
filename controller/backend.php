@@ -26,6 +26,11 @@ function removeComment($id)
 	}
 }
 
+function addPostView()
+{
+	require('view/backend/addPostView.php');
+}
+
 function addPost($title, $post)
 {
 	$postManager = new \JeanForteroche\Blog\Model\PostManager();

@@ -47,6 +47,9 @@ try {
 		elseif ($_GET['action'] == 'controlPanel') {
 			controlPanel();
 		}
+		elseif ($_GET['action'] == 'addPostView') {
+			addPostView();
+		}
 		elseif ($_GET['action'] == 'removeComment'){
 			if (isset($_GET['id']) && $_GET['id'] > 0) {
 				removeComment($_GET['id']);
