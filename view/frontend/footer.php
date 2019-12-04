@@ -1,3 +1,3 @@
 <footer>
-	<a href="index.php?action=controlPanel">Accès Administration</a>
+	<a href="index.php?action=adminAccess">Accès Administration</a>
 </footer>

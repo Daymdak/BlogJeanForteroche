@@ -49,3 +49,8 @@ function reportComment($postId, $id)
 		header('Location: index.php?action=post&id=' . $postId);
 	}
 }
+
+function adminAccess()
+{
+	require('view/frontend/adminAccess.php');
+}

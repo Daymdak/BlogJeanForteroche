@@ -41,6 +41,9 @@ try {
 				throw new Exception('Aucun identifiant de commentaire envoyé');
 			}
 		}
+		elseif ($_GET['action'] == 'adminAccess') {
+			adminAccess();
+		}
 		elseif ($_GET['action'] == 'controlPanel') {
 			controlPanel();
 		}
