@@ -17,11 +17,18 @@
 	</head>
 
 	<body>
-		<?php require_once("view/backend/header.php"); ?>
-		<div class="container">
-			<?= $content ?>
-		</div>
-		<?php require_once("view/backend/footer.php"); ?>
+		<?php
+		if (isset($_SESSION['admin']) && $_SESSION['admin'] = true)
+		{
+			require_once("view/backend/header.php"); ?>
+			<div class="container">
+				<?= $content ?>
+			</div>
+			<?php require_once("view/backend/footer.php");
+		}
+		else {
+			throw new Exception('L\'accès a cette page est réservé aux administrateur');
+		}
+		?>
 	</body>
-
 </html>
