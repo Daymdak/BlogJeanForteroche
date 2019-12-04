@@ -79,6 +79,10 @@ form div input, form div textarea
 
 /*adminView*/
 
+#titleNewPost
+{
+	width: 100%;
+}
 table
 {
 	border-collapse: collapse;

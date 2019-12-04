@@ -9,7 +9,9 @@
 
 	<body>
 		<?php require_once("view/frontend/header.php"); ?>
-		<?= $content ?>
+		<div class="container">
+			<?= $content ?>
+		</div>
 		<?php require_once("view/frontend/footer.php"); ?>
 	</body>
 </html>

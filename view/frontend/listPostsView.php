@@ -2,7 +2,6 @@
 
 <?php ob_start(); ?>
 
-<div class="container">
 <?php
 while ($data = $posts->fetch())
 {
@@ -16,7 +15,10 @@ while ($data = $posts->fetch())
 			$extract = explode(' ', trim($data['content']));
 			for ($i = 0; $i < 40; $i++)
 			{
-				echo nl2br(htmlspecialchars($extract[$i]) . ' ');
+				if (!empty($extract[$i]))
+				{
+					echo $extract[$i] . ' ';
+				}
 			}
 			?>
 			... <a href="index.php?action=post&amp;id=<?= $data['id'] ?>" class="readMoreLink">Lire la suite</a>
@@ -26,7 +28,6 @@ while ($data = $posts->fetch())
 }
 $posts->closeCursor();
 ?>
-</div>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?> 

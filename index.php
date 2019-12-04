@@ -52,6 +52,14 @@ try {
 				throw new Exception('Aucun identifiant de commentaire envoyé');
 			}
 		}
+		elseif ($_GET['action'] == 'addPost') {
+			if (!empty($_POST['title']) && !empty($_POST['post'])) {
+				addPost($_POST['title'], $_POST['post']);
+			}
+			else {
+				throw new Exception('Tous les champs ne sont pas remplis !');
+			}
+		}
 	}
 	else {
 		listPosts();
