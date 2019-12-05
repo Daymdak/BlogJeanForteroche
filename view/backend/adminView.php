@@ -26,7 +26,7 @@
 						}
 					}
 					?>
-					... <a href="#">Lire la suite</a>
+					... <a href="index.php?action=postView&amp;id=<?= $lastPost['id'] ?>">Lire la suite</a>
 				</td>
 				<td><?= $lastPost['creation_date_fr']?></td>
 				<td><p><a href="index.php?action=updatePostView&amp;id=<?= $lastPost['id'] ?>">Modifier</a></p><p><a href="index.php?action=deletePost&amp;id=<?= $lastPost['id'] ?>">Supprimer</a></p></td>

@@ -101,3 +101,12 @@ function deletePost($id)
 		header('Location: index.php?action=controlPanel');
 	}
 }
+
+function postView($id)
+{
+	$postManager = new \JeanForteroche\Blog\Model\PostManager();
+
+	$getPost = $postManager->getPost($id);
+
+	require('view/backend/postView.php');
+}

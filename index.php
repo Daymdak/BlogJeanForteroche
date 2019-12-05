@@ -59,6 +59,14 @@ try {
 		elseif ($_GET['action'] == 'allCommentsView') {
 			allCommentsView();
 		}
+		elseif ($_GET['action'] == 'postView') {
+			if (isset($_GET['id']) && $_GET['id'] > 0) {
+				postView($_GET['id']);
+			}
+			else {
+				throw new Exception('Aucun identifiant de billet envoyé');
+			}
+		}
 		elseif ($_GET['action'] == 'updatePostView') {
 			if (isset($_GET['id']) && $_GET['id'] > 0) {
 				updatePostView($_GET['id']);
