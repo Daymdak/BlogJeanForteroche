@@ -64,3 +64,40 @@ function allCommentsView()
 
 	require('view/backend/allCommentsView.php');
 }
+
+function updatePostView($id)
+{
+	$postManager = new \JeanForteroche\Blog\Model\PostManager();
+
+	$getPost = $postManager->getPost($id);
+
+	require('view/backend/updatePostView.php');
+}
+
+function updatePost($id, $title, $post)
+{
+	$postManager = new \JeanForteroche\Blog\Model\PostManager();
+
+	$updatePost = $postManager->changePost($id, $title, $post);
+
+	if ($updatePost === false) {
+		throw new Exception('Impossible de mettre à jour le billet');
+	}
+	else {
+		header('Location: index.php?action=controlPanel');
+	}
+}
+
+function deletePost($id)
+{
+	$postManager = new \JeanForteroche\Blog\Model\PostManager();
+
+	$removePost = $postManager->removePost($id);
+
+	if ($removePost === false) {
+		throw new Excepetion('Impossible de supprimer le billet');
+	}
+	else {
+		header('Location: index.php?action=controlPanel');
+	}
+}

@@ -59,6 +59,28 @@ try {
 		elseif ($_GET['action'] == 'allCommentsView') {
 			allCommentsView();
 		}
+		elseif ($_GET['action'] == 'updatePostView') {
+			if (isset($_GET['id']) && $_GET['id'] > 0) {
+				updatePostView($_GET['id']);
+			}
+			else {
+				throw new Exception('Aucun identifiant de billet envoyé');
+			}
+		}
+		elseif ($_GET['action'] == 'updatePost') {
+			if (isset($_GET['id']) && $_GET['id'] > 0) {
+				if (!empty($_POST['title']) && !empty($_POST['post']))
+				{
+					updatePost($_GET['id'], $_POST['title'], $_POST['post']);
+				}
+				else {
+					throw new Exception('Tous les champs ne sont pas remplis');
+				}
+			}
+			else {
+				throw new Exception('Aucun identifiant de billet envoyé');
+			}
+		}
 		elseif ($_GET['action'] == 'removeComment'){
 			if (isset($_GET['id']) && $_GET['id'] > 0) {
 				removeComment($_GET['id']);
@@ -73,6 +95,14 @@ try {
 			}
 			else {
 				throw new Exception('Tous les champs ne sont pas remplis !');
+			}
+		}
+		elseif ($_GET['action'] == 'deletePost') {
+			if (isset($_GET['id']) && $_GET['id'] > 0) {
+				deletePost($_GET['id']);
+			}
+			else {
+				throw new Exception('Aucun identifiant de commentaire envoyé');
 			}
 		}
 	}

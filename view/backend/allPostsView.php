@@ -29,7 +29,7 @@
 			... <a href="#">Lire la suite</a>
 		</td>
 		<td><?= $getAllPost['creation_date_fr']?></td>
-		<td><p><a href="#">Modifier</a></p><p><a href="#">Supprimer</a></p></td>
+		<td><p><a href="index.php?action=updatePostView&amp;id=<?= $getAllPost['id'] ?>">Modifier</a></p><p><a href="index.php?action=deletePost&amp;id=<?= $getAllPost['id'] ?>">Supprimer</a></p></td>
 	</tr>
 	<?php
 	}

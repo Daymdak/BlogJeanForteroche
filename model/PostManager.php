@@ -12,7 +12,7 @@ class PostManager extends Manager
 
 		return $req;
 	}
-	
+
 	public function getPosts()
 	{
 		$db = $this->dbConnect();
@@ -36,6 +36,26 @@ class PostManager extends Manager
 		$db = $this->dbConnect();
 		$req = $db->prepare('INSERT INTO posts(title, content, creation_date) VALUES (?, ?, NOW())');
 		$req->execute(array($title, $post));
+
+		return $req;
+	}
+
+	public function changePost($id, $title, $post)
+	{
+		$db = $this->dbConnect();
+		$req = $db->prepare('UPDATE posts SET title = :title, content = :post WHERE id = :id');
+		$req->execute(array(
+			'title' => $title,
+			'post' => $post,
+			'id' => $id
+		));
+	}
+
+	public function removePost($id)
+	{
+		$db = $this->dbConnect();
+		$req = $db->prepare('DELETE FROM posts WHERE id= ?');
+		$req->execute(array($id));
 
 		return $req;
 	}
