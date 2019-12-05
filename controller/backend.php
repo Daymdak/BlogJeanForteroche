@@ -6,8 +6,10 @@ require_once('model/CommentManager.php');
 function controlPanel()
 {
 	$commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+	$postManager = new \JeanForteroche\Blog\Model\PostManager();
 
 	$reportedComments = $commentManager->getReportedComments();
+	$lastPosts = $postManager->getPosts();
 
 	require('view/backend/adminView.php');
 }

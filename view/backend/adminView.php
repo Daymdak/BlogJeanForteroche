@@ -1,6 +1,41 @@
 <?php $title = "Page d'administration" ?>
 
 <?php ob_start(); ?>
+	<h2>Les derniers billets publiés</h2>
+	<table>
+		<tr>
+			<th>Titre</th>
+			<th>Extrait</th>
+			<th>Date de publication</th>
+			<th>Modifier/Supprimer</th>
+		</tr>
+		<?php
+		while ($lastPost = $lastPosts->fetch())
+		{
+		?>
+			<tr>
+				<td><?= $lastPost['title']?></td>
+				<td>
+					<?php
+					$extract = explode(' ', trim($lastPost['content']));
+					for ($i = 0; $i < 40; $i++)
+					{
+						if (!empty($extract[$i]))
+						{
+							echo $extract[$i] . ' ';
+						}
+					}
+					?>
+					... <a href="#">Lire la suite</a>
+				</td>
+				<td><?= $lastPost['creation_date_fr']?></td>
+				<td><p><a href="#">Modifier</a></p><p><a href="#">Supprimer</a></p></td>
+			</tr>
+		<?php
+		}
+		?>
+	</table>
+
 	<h2>Modération des commentaires</h2>
 	<table>
 		<tr>
