@@ -53,6 +53,12 @@ try {
 		elseif ($_GET['action'] == 'addPostView') {
 			addPostView();
 		}
+		elseif ($_GET['action'] == 'allPostsView') {
+			allPostsView();
+		}
+		elseif ($_GET['action'] == 'allCommentsView') {
+			allCommentsView();
+		}
 		elseif ($_GET['action'] == 'removeComment'){
 			if (isset($_GET['id']) && $_GET['id'] > 0) {
 				removeComment($_GET['id']);

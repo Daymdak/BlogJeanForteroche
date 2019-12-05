@@ -5,6 +5,13 @@ require_once("model/Manager.php");
 
 class CommentManager extends Manager
 {
+	public function getAllComments()
+	{
+		$db = $this->dbConnect();
+		$comments = $db->query('SELECT * FROM comments ORDER BY id DESC');
+
+		return $comments;
+	}
 	public function getComments($postId)
 	{
 		$db = $this->dbConnect();

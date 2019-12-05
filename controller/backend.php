@@ -46,3 +46,21 @@ function addPost($title, $post)
 		header('Location: index.php?action=controlPanel');
 	}
 }
+
+function allPostsView()
+{
+	$postManager = new \JeanForteroche\Blog\Model\PostManager();
+
+	$getAllPosts = $postManager->getAllPosts();
+
+	require('view/backend/allPostsView.php');
+}
+
+function allCommentsView()
+{
+	$commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+
+	$getAllComments = $commentManager->getAllComments();
+
+	require('view/backend/allCommentsView.php');
+}
