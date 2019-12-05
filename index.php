@@ -20,6 +20,7 @@ try {
 		elseif ($_GET['action'] == 'addComment') {
 			if (isset($_GET['id']) && $_GET['id'] > 0) {
 				if (!empty($_POST['author']) && !empty($_POST['comment'])) {
+					setcookie('pseudo', $_POST['author'], time() + 365*24*3600, null, null, false, true);
 					addComment($_GET['id'], $_POST['author'], $_POST['comment']);
 				}
 				else {

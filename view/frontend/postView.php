@@ -17,7 +17,7 @@
 <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
 	<div>
 		<label for="author">Auteur</label><br />
-		<input type="text" id="author" name="author" />
+		<input type="text" id="author" name="author" <?php if(isset($_COOKIE['pseudo'])) { echo 'value="' . $_COOKIE['pseudo'] . '"';} ?> />
 	</div>
 	<div>
 		<label for="comment">Commentaire</label><br />
