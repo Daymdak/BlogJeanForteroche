@@ -13,10 +13,14 @@ class PostManager extends Manager
 		return $req;
 	}
 
-	public function getPosts()
+	public function getPosts($n_page, $nbr_posts)
 	{
 		$db = $this->dbConnect();
-		$req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y\') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT 0, 5');
+
+		$req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y\') AS creation_date_fr FROM posts ORDER BY creation_date DESC LIMIT :n_page, :nbr_posts');
+		$req->bindValue('n_page', $n_page, \PDO::PARAM_INT);
+		$req->bindValue('nbr_posts', $nbr_posts, \PDO::PARAM_INT);
+		$req->execute();
 
 		return $req;
 	}

@@ -35,6 +35,7 @@ footer
 {
 	position: absolute;
 	bottom: 0;
+	left: 0;
 	width: 100%;
 	height: 100px;
 	display: flex;
@@ -53,9 +54,27 @@ a, a:hover
 	text-decoration: none;
 }
 
+
+.paging
+{
+	display: flex;
+	justify-content: center;
+	position: relative;
+}
+
+.paging a
+{
+	margin: 0 10px 0 10px;
+}
+
+#listPosts
+{
+	height: 70vh;
+}
+
 /*postView*/
 
-.news p
+.post p
 {
 	text-align: justify;
 }
@@ -85,9 +104,11 @@ form div input, form div textarea
 {
 	width: 100%;
 }
+
 table
 {
 	border-collapse: collapse;
+	width: 100%;
 }
 
 td, th

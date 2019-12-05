@@ -7,7 +7,13 @@ require('controller/backend.php');
 try {
 	if (isset($_GET['action'])) {
 		if ($_GET['action'] == 'listPosts') {
-			listPosts();
+			if (isset($_GET['page']) && $_GET['page'] > 0){
+				listPosts($_GET['page']);	
+			}
+			else {
+				listPosts(1);
+			}
+			
 		}
 		elseif ($_GET['action'] == 'post') {
 			if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -115,7 +121,7 @@ try {
 		}
 	}
 	else {
-		listPosts();
+		listPosts(1);
 	}
 }
 catch(Exception $e) {

@@ -9,7 +9,7 @@ function controlPanel()
 	$postManager = new \JeanForteroche\Blog\Model\PostManager();
 
 	$reportedComments = $commentManager->getReportedComments();
-	$lastPosts = $postManager->getPosts();
+	$lastPosts = $postManager->getPosts(0, 5);
 
 	require('view/backend/adminView.php');
 }

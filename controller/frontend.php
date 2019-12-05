@@ -3,11 +3,15 @@
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 
-function listPosts()
+function listPosts($n_page)
 {
 	$postManager = new \JeanForteroche\Blog\Model\PostManager();
-	$posts = $postManager->getPosts();
 
+	$limit = (($n_page * 5) - 5);
+	$posts = $postManager->getPosts($limit, 5);
+
+	$getAllPosts = $postManager->getAllPosts();
+	
 	require('view/frontend/listPostsView.php');
 }
 
