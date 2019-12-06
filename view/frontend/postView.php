@@ -1,7 +1,7 @@
 <?php $title = htmlspecialchars($post['title']); ?>
 
 <?php ob_start(); ?>
-<div class="news">
+<div class="post">
 	<h2><?= htmlspecialchars($post['title']) ?></h2>
 	<p>
 		<?= $post['content'] ?>

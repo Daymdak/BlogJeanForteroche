@@ -22,13 +22,23 @@ h2, h3
 
 header
 {
-	height: 100px;
+	height: 100%;
 	border-bottom: 1px solid #999;
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
 	margin-bottom: 20px;
+}
+
+
+#backendHeader
+{
+	display: flex;
+	flex-direction: column;
 	text-align: center;
+}
+
+#navigationBackendLink
+{
+	display: flex;
+	justify-content: space-around;
 }
 
 footer
@@ -66,12 +76,6 @@ a, a:hover
 {
 	margin: 0 10px 0 10px;
 }
-
-#listPosts
-{
-	height: 70vh;
-}
-
 /*postView*/
 
 .post p
@@ -109,11 +113,41 @@ table
 {
 	border-collapse: collapse;
 	width: 100%;
+	color: white;
 }
 
 td, th
 {
-	border: 1px solid black;
+	border: 1px solid white;
 	text-align: center;
 	padding: 10px;
+}
+
+tr:nth-child(even)
+{
+	background-color: #EEE;
+	color: #333;
+}
+
+tr:nth-child(odd)
+{
+	background-color: #333;
+}
+
+@media screen and (orientation: portrait) and (max-width: 576px)
+{
+	.tableHeader
+	{
+		display: none;
+	}
+
+	td
+	{
+		display: block;
+	}
+
+	tr td:nth-child(1)
+	{
+		background-color: #5cadd3;
+	}
 }

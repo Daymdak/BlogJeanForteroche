@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 	<h2>Les derniers billets publiés</h2>
 	<table>
-		<tr>
+		<tr class="tableHeader">
 			<th>Titre</th>
 			<th>Extrait</th>
 			<th>Date de publication</th>
@@ -38,7 +38,7 @@
 
 	<h2>Commentaires signalés</h2>
 	<table>
-		<tr>
+		<tr class="tableHeader">
 			<th>Auteur</th>
 			<th>Commentaire</th>
 			<th>Nombre de signalement</th>
@@ -51,8 +51,8 @@
 		?>
 			<tr>
 				<td><?= htmlspecialchars($reportedComment['author']) ?></td>
-				<td><?= htmlspecialchars($reportedComment['comment']) ?></td>
-				<td><?= $reportedComment['reports'] ?></td>
+				<td>"<?= htmlspecialchars($reportedComment['comment']) ?>"</td>
+				<td><?= $reportedComment['reports'] ?> signalement(s)</td>
 				<td><?= $reportedComment['comment_date'] ?></td>
 				<td><a href="index.php?action=removeComment&amp;id=<?= $reportedComment['id'] ?>">Supprimer</a></td>
 			</tr>

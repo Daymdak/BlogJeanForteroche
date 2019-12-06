@@ -24,26 +24,25 @@
 			... <a href="index.php?action=post&amp;id=<?= $data['id'] ?>" class="readMoreLink">Lire la suite</a>
 		</p>
 	</div>
-	</div>
 	<?php
 	}
 	?>
 </div>
-	<div class="paging">
-		<?php
-		$nbr_page = 0;
-		while ($getAllPost = $getAllPosts->fetch()) {
-			$nbr_page++;
-		}
-		$nbr_page = $nbr_page / 5;
-		for ($i = 1; $i < $nbr_page + 1; $i++)
-		{
-		?>
-			<a href="index.php?action=listPosts&amp;page=<?= $i ?>"><?= $i ?></a>
-		<?php
-		}
-		?>
-	</div>
+<div class="paging">
+	<?php
+	$nbr_page = 0;
+	while ($getAllPost = $getAllPosts->fetch()) {
+		$nbr_page++;
+	}
+	$nbr_page = $nbr_page / 5;
+	for ($i = 1; $i < $nbr_page + 1; $i++)
+	{
+	?>
+		<a href="index.php?action=listPosts&amp;page=<?= $i ?>"><?= $i ?></a>
+	<?php
+	}
+	?>
+</div>
 
 <?php
 $posts->closeCursor();

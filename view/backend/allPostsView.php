@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 <h2>Tous les billets</h2>
 <table>
-	<tr>
+	<tr class="tableHeader">
 		<th>Titre</th>
 		<th>Extrait</th>
 		<th>Date de publication</th>
