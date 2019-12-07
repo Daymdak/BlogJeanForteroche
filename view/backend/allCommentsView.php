@@ -19,7 +19,7 @@
 			<td>"<?= htmlspecialchars($getAllComment['comment']) ?>"</td>
 			<td><?= $getAllComment['reports'] ?> signalement(s)</td>
 			<td><?= $getAllComment['comment_date'] ?></td>
-			<td><a href="index.php?action=removeComment&amp;id=<?= $getAllComment['id'] ?>">Supprimer</a></td>
+			<td><a href="index.php?action=removeComment&amp;id=<?= $getAllComment['id'] ?>"><i class="far fa-trash-alt fa-lg"></i></a></td>
 		</tr>
 	<?php
 	}

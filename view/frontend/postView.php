@@ -1,9 +1,9 @@
 <?php $title = htmlspecialchars($post['title']); ?>
 
 <?php ob_start(); ?>
-<div class="post">
+<div class="entirePost">
 	<h2><?= htmlspecialchars($post['title']) ?></h2>
-	<p>
+	<p class="mt-3">
 		<?= $post['content'] ?>
 	</p>
 	<div class="dateAndReturnLink">
@@ -12,7 +12,7 @@
 	</div>
 </div>
 
-<h3>Commentaires</h3>
+<h3 class="mt-5">Commentaires</h3>
 
 <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
 	<div>
@@ -33,7 +33,7 @@ while ($comment = $comments->fetch())
 {
 ?>
 	<div class="comment">
-		<p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?> - <a href="index.php?action=reportComment&amp;id=<?= $comment['id'] ?>&amp;postId=<?= $comment['post_id'] ?>">Signaler</a></p>
+		<p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?> - <a href="index.php?action=reportComment&amp;id=<?= $comment['id'] ?>&amp;postId=<?= $comment['post_id'] ?>"><i class="fas fa-exclamation-triangle"></i></a></p>
 		<p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
 	</div>
 <?php
