@@ -51,7 +51,12 @@ try {
 			}
 		}
 		elseif ($_GET['action'] == 'adminAccess') {
-			adminAccess();
+			if (isset($_POST['password'])) {
+				adminAccess($_POST['password']);
+			}
+			else {
+				adminAccess(false);
+			}
 		}
 		elseif ($_GET['action'] == 'controlPanel') {
 			controlPanel();

@@ -11,7 +11,8 @@
 			posté le <?= $data['creation_date_fr'] ?>
 			<p>
 				<?php
-				$extract = explode(' ', trim($data['content']));
+				$cleanContent = strip_tags($data['content']);
+				$extract = explode(' ', trim(htmlspecialchars($cleanContent)));
 				for ($i = 0; $i < 40; $i++) {
 					if (!empty($extract[$i])) {
 						echo $extract[$i] . ' ';
@@ -20,7 +21,6 @@
 				?>
 				... <a href="index.php?action=post&amp;id=<?= $data['id'] ?>" class="readMoreLink">Lire la suite</a>
 			</p>
-		</div>
 		</div>
 	<?php
 	}

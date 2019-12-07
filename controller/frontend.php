@@ -54,7 +54,14 @@ function reportComment($postId, $id)
 	}
 }
 
-function adminAccess()
+function adminAccess($password)
 {
-	require('view/frontend/adminAccess.php');
+	if ((isset($password) && $password == "Apotoxine-4869") || isset($_SESSION['admin']))
+	{
+		$_SESSION['admin'] = true;
+		header('Location: index.php?action=controlPanel');
+	}
+	else {
+		require('view/frontend/adminAccess.php');
+	}
 }

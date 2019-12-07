@@ -17,11 +17,10 @@
 				<td><?= $lastPost['title']?></td>
 				<td>
 					<?php
-					$extract = explode(' ', trim($lastPost['content']));
-					for ($i = 0; $i < 40; $i++)
-					{
-						if (!empty($extract[$i]))
-						{
+					$cleanContent = strip_tags($lastPost['content']);
+					$extract = explode(' ', trim(htmlspecialchars($cleanContent)));
+					for ($i = 0; $i < 40; $i++) {
+						if (!empty($extract[$i])) {
 							echo $extract[$i] . ' ';
 						}
 					}

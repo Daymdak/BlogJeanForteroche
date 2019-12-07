@@ -1,4 +1,5 @@
 /*All views*/
+
 body
 {
 	color: #FFF;
@@ -15,12 +16,18 @@ h2, h3
 	font-weight: bold;
 }
 
+a, a:hover
+{
+	text-decoration: none;
+}
+
 header
 {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
 	background-color: #222;
 	height: 120px;
 	border-bottom: 1px solid #999;
@@ -36,13 +43,6 @@ header a
 header a:hover
 {
 	color: #CCC;
-}
-
-#navigationBackendLink
-{
-	display: flex;
-	justify-content: center;
-	font-size: 22px;
 }
 
 footer
@@ -63,11 +63,6 @@ footer a
 	margin-right: 10px;
 }
 
-a, a:hover
-{
-	text-decoration: none;
-}
-
 .entirePost
 {
 	text-align: justify;
@@ -79,13 +74,9 @@ a, a:hover
 	border-radius: 15px;
 }
 
-.comment
-{
-	text-align: justify;
-	background-color: #FFF;
-	color: #333;
-	border-radius: 15px;
-}
+/*Frontend*/
+
+/*ListPost*/
 
 #listPosts
 {
@@ -97,10 +88,9 @@ a, a:hover
 .post
 {
 	text-align: justify;
-	font-style: normal;
-	font-weight: normal;
 	background-color: white;
 	color: #333;
+	width: 65%;
 	border-radius: 15px;
 	padding: 5px;
 	margin: 10px;
@@ -117,9 +107,8 @@ a, a:hover
 {
 	margin: 0 10px 0 10px;
 }
-/*postView*/
 
-
+/*PostView*/
 
 .dateAndReturnLink
 {
@@ -128,23 +117,31 @@ a, a:hover
 	align-items: flex-end;
 }
 
-.comment
-{
-	border: 1px solid #888;
-	margin: 10px 0 10px 0;
-	padding: 5px;
-}
-
 form div input, form div textarea
 {
 	width: 100%;
 }
 
-/*adminView*/
-
-#titleNewPost
+.comment
 {
-	width: 100%;
+	text-align: justify;
+	background-color: #FFF;
+	color: #333;
+	border-radius: 15px;
+	border: 1px solid #888;
+	margin: 10px 0 10px 0;
+	padding: 5px;
+}
+
+/*Backend*/
+
+/*Header*/
+
+#navigationBackendLink
+{
+	display: flex;
+	justify-content: center;
+	font-size: 22px;
 }
 
 table
@@ -178,8 +175,27 @@ hr
 	height: 3px;
 }
 
+/*AddPostView*/
+
+#titleNewPost
+{
+	width: 100%;
+}
+
+/*Media Queries*/
+
 @media screen and (orientation: portrait) and (max-width: 576px)
 {
+	#backendHeader
+	{
+		height: 100%;
+	}
+
+	#navigationBackendLink
+	{
+		flex-direction: column;
+		padding-bottom: 10px;
+	}
 	.tableHeader
 	{
 		display: none;
