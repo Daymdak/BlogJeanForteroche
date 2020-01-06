@@ -5,38 +5,55 @@ require_once('model/CommentManager.php');
 
 function listPosts($n_page)
 {
-	$postManager = new \JeanForteroche\Blog\Model\PostManager();
+	if (isset($n_page) && $n_page > 0)
+	{
+		$postManager = new \JeanForteroche\Blog\Model\PostManager();
 
-	$limit = (($n_page * 5) - 5);
-	$posts = $postManager->getPosts($limit, 5);
+		$limit = (($n_page * 5) - 5);
+		$posts = $postManager->getPosts($limit, 5);
 
-	$getAllPosts = $postManager->getAllPosts();
+		$getAllPosts = $postManager->getAllPosts();
 	
-	require('view/frontend/listPostsView.php');
+		require('view/frontend/listPostsView.php');
+	}
+	else {
+		throw new Exception('Aucun numéro de page renseigné.');
+	}
 }
 
-function post()
+function post($id)
 {
-	$postManager = new \JeanForteroche\Blog\Model\PostManager();
-	$commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+	if (isset($id) && $id > 0)
+	{
+		$postManager = new \JeanForteroche\Blog\Model\PostManager();
+		$commentManager = new \JeanForteroche\Blog\Model\CommentManager();
 
-	$post = $postManager->getPost($_GET['id']);
-	$comments = $commentManager->getComments($_GET['id']);
+		$post = $postManager->getPost($_GET['id']);
+		$comments = $commentManager->getComments($_GET['id']);
 
-	require('view/frontend/postView.php');
+		require('view/frontend/postView.php');
+	}
+	else {
+		throw new Exception('Aucun identifiant de billet envoyé');
+	}
 }
 
 function addComment($postId, $author, $comment)
 {
-	$commentManager = new \JeanForteroche\Blog\Model\CommentManager();
-
-	if (!empty($postId) && !empty($author) && !empty($comment)) {
-		$newComment = $commentManager->postComment($postId, $author, $comment);
+	if (isset($postId) && $postId > 0)
+	{
+		if (!empty($author) && !empty($comment)) {
+		$commentManager = new \JeanForteroche\Blog\Model\CommentManager();
+		$commentManager->postComment($postId, $author, $comment);
 		setcookie('pseudo', $_POST['author'], time() + 365*24*3600, null, null, false, true);
 		header('Location: index.php?action=post&id=' . $postId);
+		}
+		else {
+			throw new Exception('Impossible d\'ajouter le commentaire !');
+		}
 	}
 	else {
-		throw new Exception('Impossible d\'ajouter le commentaire !');
+		throw new Exception('Aucun identifiant de billet renseigné.');
 	}
 }
 

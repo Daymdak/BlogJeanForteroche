@@ -17,11 +17,11 @@
 <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
 	<div>
 		<label for="author">Auteur</label><br />
-		<input type="text" id="author" name="author" <?php if(isset($_COOKIE['pseudo'])) { echo 'value="' . $_COOKIE['pseudo'] . '"';} ?> />
+		<input type="text" id="author" name="author" <?php if(isset($_COOKIE['pseudo'])) { echo 'value="' . $_COOKIE['pseudo'] . '"';} ?> maxlength="16" minlength="3" required />
 	</div>
 	<div>
 		<label for="comment">Commentaire</label><br />
-		<textarea id="comment" name="comment"></textarea>
+		<textarea id="comment" name="comment" maxlength="256" minlength="2" required></textarea>
 	</div>
 	<div>
 		<input type="submit">

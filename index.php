@@ -7,50 +7,19 @@ require('controller/backend.php');
 try {
 	if (isset($_GET['action'])) {
 		if ($_GET['action'] == 'listPosts') {
-			if (isset($_GET['page']) && $_GET['page'] > 0){
-				listPosts($_GET['page']);	
-			}
-			else {
-				listPosts(1);
-			}
-			
+			listPosts($_GET['page']);	
 		}
 		elseif ($_GET['action'] == 'post') {
-			if (isset($_GET['id']) && $_GET['id'] > 0) {
-				post();
-			}
-			else {
-				throw new Exception('Aucun identifiant de billet envoyé');
-			}
+			post($_GET['id']);			
 		}
 		elseif ($_GET['action'] == 'addComment') {
-			if (isset($_GET['id']) && $_GET['id'] > 0) {
-				addComment($_GET['id'], $_POST['author'], $_POST['comment']);
-			}
-			else {
-				throw new Exception('Aucun identifiant de billet envoyé');
-			}
+			addComment($_GET['id'], $_POST['author'], $_POST['comment']);
 		}
 		elseif ($_GET['action'] == 'reportComment') {
-			if (isset($_GET['id']) && $_GET['id'] > 0) {
-				if (isset($_GET['postId']) && $_GET['postId'] > 0) {
-					reportComment($_GET['postId'], $_GET['id']);
-				}
-				else {
-					throw new Exception('Aucun identifiant de billet envoyé');
-				}
-			}
-			else {
-				throw new Exception('Aucun identifiant de commentaire envoyé');
-			}
+			reportComment($_GET['postId'], $_GET['id']);
 		}
 		elseif ($_GET['action'] == 'adminAccess') {
-			if (isset($_POST['password'])) {
-				adminAccess($_POST['password']);
-			}
-			else {
-				adminAccess(false);
-			}
+			adminAccess($_POST['password']);
 		}
 		elseif ($_GET['action'] == 'controlPanel') {
 			controlPanel();
@@ -65,52 +34,22 @@ try {
 			allCommentsView();
 		}
 		elseif ($_GET['action'] == 'postView') {
-			if (isset($_GET['id']) && $_GET['id'] > 0) {
-				postView($_GET['id']);
-			}
-			else {
-				throw new Exception('Aucun identifiant de billet envoyé');
-			}
+			postView($_GET['id']);
 		}
 		elseif ($_GET['action'] == 'updatePostView') {
-			if (isset($_GET['id']) && $_GET['id'] > 0) {
-				updatePostView($_GET['id']);
-			}
-			else {
-				throw new Exception('Aucun identifiant de billet envoyé');
-			}
+			updatePostView($_GET['id']);
 		}
 		elseif ($_GET['action'] == 'updatePost') {
-			if (isset($_GET['id']) && $_GET['id'] > 0) {
-				updatePost($_GET['id'], $_POST['title'], $_POST['post']);
-			}
-			else {
-				throw new Exception('Aucun identifiant de billet envoyé');
-			}
+			updatePost($_GET['id'], $_POST['title'], $_POST['post']);
 		}
 		elseif ($_GET['action'] == 'removeComment'){
-			if (isset($_GET['id']) && $_GET['id'] > 0) {
 				removeComment($_GET['id']);
-			}
-			else {
-				throw new Exception('Aucun identifiant de commentaire envoyé');
-			}
 		}
 		elseif ($_GET['action'] == 'addPost') {
-			if (!empty($_POST['title']) && !empty($_POST['post'])) {
-				addPost($_POST['title'], $_POST['post']);
-			}
-			else {
-				throw new Exception('Tous les champs ne sont pas remplis !');
-			}
+			addPost($_POST['title'], $_POST['post']);
 		}
 		elseif ($_GET['action'] == 'deletePost') {
-			if (isset($_GET['id']) && $_GET['id'] > 0) {
 				deletePost($_GET['id']);
-			}
-			else {
-				throw new Exception('Aucun identifiant de commentaire envoyé');
-			}
 		}
 	}
 	else {
