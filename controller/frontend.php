@@ -30,13 +30,13 @@ function addComment($postId, $author, $comment)
 {
 	$commentManager = new \JeanForteroche\Blog\Model\CommentManager();
 
-	$newComment = $commentManager->postComment($postId, $author, $comment);
-
-	if ($newComment === false) {
-		throw new Exception('Impossible d\'ajouter le commentaire !');
+	if (!empty($postId) && !empty($author) && !empty($comment)) {
+		$newComment = $commentManager->postComment($postId, $author, $comment);
+		setcookie('pseudo', $_POST['author'], time() + 365*24*3600, null, null, false, true);
+		header('Location: index.php?action=post&id=' . $postId);
 	}
 	else {
-		header('Location: index.php?action=post&id=' . $postId);
+		throw new Exception('Impossible d\'ajouter le commentaire !');
 	}
 }
 

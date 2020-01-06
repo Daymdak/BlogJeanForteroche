@@ -25,13 +25,7 @@ try {
 		}
 		elseif ($_GET['action'] == 'addComment') {
 			if (isset($_GET['id']) && $_GET['id'] > 0) {
-				if (!empty($_POST['author']) && !empty($_POST['comment'])) {
-					setcookie('pseudo', $_POST['author'], time() + 365*24*3600, null, null, false, true);
-					addComment($_GET['id'], $_POST['author'], $_POST['comment']);
-				}
-				else {
-					throw new Exception('Tous les champs ne sont pas remplis !');
-				}
+				addComment($_GET['id'], $_POST['author'], $_POST['comment']);
 			}
 			else {
 				throw new Exception('Aucun identifiant de billet envoyé');
@@ -88,13 +82,7 @@ try {
 		}
 		elseif ($_GET['action'] == 'updatePost') {
 			if (isset($_GET['id']) && $_GET['id'] > 0) {
-				if (!empty($_POST['title']) && !empty($_POST['post']))
-				{
-					updatePost($_GET['id'], $_POST['title'], $_POST['post']);
-				}
-				else {
-					throw new Exception('Tous les champs ne sont pas remplis');
-				}
+				updatePost($_GET['id'], $_POST['title'], $_POST['post']);
 			}
 			else {
 				throw new Exception('Aucun identifiant de billet envoyé');

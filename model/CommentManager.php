@@ -12,6 +12,7 @@ class CommentManager extends Manager
 
 		return $comments;
 	}
+	
 	public function getComments($postId)
 	{
 		$db = $this->dbConnect();
